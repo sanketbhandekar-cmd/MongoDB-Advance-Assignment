@@ -1,0 +1,13 @@
+# Task 6: Backup and Restore
+
+# 1. Back up company_advanced into a gzipped archive
+mongodump --db company_advanced --archive=company_advanced.archive --gzip
+
+# 2. Restore into a separate database without overwriting company_advanced
+mongorestore --archive=company_advanced.archive --gzip --nsFrom="company_advanced.*" --nsTo="company_advanced_restore.*"
+
+# 3. Verify restored collection counts in mongosh
+# use company_advanced_restore
+# db.employees.countDocuments()
+# db.departments.countDocuments()
+# db.sessions.countDocuments()
